@@ -1,6 +1,8 @@
 # latex.slides.g8
 
-Unofficial opinionated [Giter8][g8] template for latex slides
+Unofficial opinionated [Giter8][g8] template for latex slides.
+
+**HIGHLY WIP**: don't trust the selection of plugins or the part of the code that have not been properly templatised/parametrised yet.  
 
 Assuming g8 is installed on the machine (see next section), it is also possible to generate a new project from a local clone of the repo by using 
 ```
