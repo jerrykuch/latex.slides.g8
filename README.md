@@ -1,6 +1,6 @@
 # latex.slides.g8
 
-Unofficial opinionated [Giter8][g8] template for latex slides.
+Unofficial opinionated [Giter8][g8] template for latex beamer slides, using metropolis style
 
 **HIGHLY WIP**: don't trust the selection of plugins or the part of the code that have not been properly templatised/parametrised yet.  
 
