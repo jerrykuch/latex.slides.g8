@@ -2,8 +2,11 @@
 \documentclass[10pt]{beamer}
 \usepackage[english]{babel}
 
+% Beamer theme
 \usetheme{metropolis}
+
 \usepackage{smartdiagram}
+\usepackage{lstautogobble}
 \usepackage{listings}
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}%creative commons
@@ -18,38 +21,27 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning,chains,fit,shapes,calc}
 \usetikzlibrary{positioning,chains,fit,shapes,calc,automata,positioning}
-\newcommand{\mycomment}[1]{}
 \usepackage{fancyvrb}
-\usepackage{ifpdf}                        % To check if pdflatex is used.
 
+% To include metapost files.
+\usepackage{ifpdf}                        % To check if pdflatex is used.
 \ifpdf
-  \DeclareGraphicsRule{*}{mps}{*}{}       % To include metapost files.
+  \DeclareGraphicsRule{*}{mps}{*}{}
 \fi
 
+% Define path for images.
 \graphicspath{{./}, {./Images/}}
 
-\lstdefinelanguage{Kotlin}{
-  keywords={package, as, typealias, this, super, val, var, fun, for, null, true, false, is, in, throw, return, break, continue, object, if, try, else, while, do, when, yield, typeof, yield, typeof, class, interface, enum, object, override, public, private, get, set, import, abstract, },
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={@Deprecated, Int, Integer, Float, Double, String, Runnable, dynamic},
-  ndkeywordstyle=\color{red}\bfseries,
-  emph={println, return@, forEach,},
-  emphstyle={\color{red}},
-  identifierstyle=\color{black},
-  sensitive=true,
-  commentstyle=\color{gray}\ttfamily,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  stringstyle=\color{gray}\ttfamily,
-  morestring=[b]",
-  morestring=[s]{"""*}{*"""},
-}
-
+% few useful commands
 \providecommand{\ie}{i.\,e.}
 \providecommand{\Ie}{I.\,e.}
 \providecommand{\eg}{e.\,g.}
-\providecommand{\Eg}{E.\,g.} 
+\providecommand{\Eg}{E.\,g.}
 
+% Basic listing setting (eg, autogobble to remove left margin)
+\lstset{basicstyle=\ttfamily, autogobble}
+
+% metropolis template settings
 \metroset{block=fill}
 \metroset{titleformat frame=smallcaps}
 
@@ -71,6 +63,20 @@
 \end{frame}
 
 \section{Warm up}
+\begin{frame}[fragile]
+  \frametitle{Placeholder Example}
+  \begin{lstlisting}[language=scala]
+    sealed trait Result[+A]
+    case object Loading extends Result[Nothng]
+    case class  Error(s : String) extends Result[Nothing]
+    case class Success[+A](a : A) extends Result[A]
+
+    def f[A] : Option[A] => Result[A] = {
+      case Some(a) => Success(a)
+      case _       => Error("invalid")
+    }
+  \end{lstlisting}
+\end{frame}
 
 
 \plain{Questions?}
@@ -81,10 +87,9 @@
 %\end{frame}
 
 \end{document}
-\begin{lstlisting}[language=Kotlin, basicstyle=\ttfamily]
-\end{lstlisting}
-
-\begin{frame}
-\begin{lstlisting}[language=Kotlin, basicstyle=\ttfamily]
-\end{lstlisting}
+%% Useful for copy pasting. Would be better to just have snippets
+\begin{frame}[fragile]
+  \frametitle{}
+  \begin{lstlisting}[language=scala, basicstyle=\ttfamily]
+  \end{lstlisting}
 \end{frame}
