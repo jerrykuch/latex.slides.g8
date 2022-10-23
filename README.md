@@ -9,11 +9,11 @@ Unofficial opinionated [Giter8][g8] template for latex beamer slides, using metr
 
 Assuming `sbt` is installed on the machine, 
 ```bash 
-sbt new alessandrocandolini/latex.slides.g8/ --name=<name> --title=<title> --author=<project author> --force
+sbt new alessandrocandolini/latex.slides.g8 --name=<name> --title=<title> --author=<project author> --force
 ```
 or from a local clone of the repo (be careful to pull the latest changes locally before running the command)
 ```bash 
-sbt new file:///<local-checkout-dir>/latex.slides.g8/ --name=<name> --title=<title> --author=<project author> --force
+sbt new file:///<local-checkout-dir>/latex.slides.g8 --name=<name> --title=<title> --author=<project author> --force
 ```
 `name` will be used as folder name (a new folder will be created if not present), title for slides title (can be edit later). By default, the author is set to be my personal name if not explicitly provided. 
 
