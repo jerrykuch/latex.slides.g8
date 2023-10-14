@@ -15,39 +15,50 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    name: Build and Test
+  build_latex:
     runs-on: ubuntu-latest
-
     steps:
-
-      - name: Checkout current branch
+      - name: Set up Git repository
         uses: actions/checkout@v3
+
+      - name: Setup nix
+        uses: cachix/install-nix-action@v20
         with:
-          fetch-depth: 0
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: "store = /home/runner/nix"
+
+      - name: Restore from cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            /home/runner/nix
+          key: key
 
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+        uses: workflow/nix-shell-action@v3
         with:
-          root_file: $filename$.tex
+          packages: texlive.combined.scheme-full, asymptote
+          script: |
+            latexmk -f -pdflatex $filename$.tex
 
-      - name: Create tag name
-        if: github.ref == 'refs/heads/main'
-        run:  |
-          VERSION="prod-\$(date -u +'%Y%m%d%H%M%SZ')"
-          echo "release_tag=\$VERSION" >> \$GITHUB_ENV
+      - name: Get next version
+        uses: reecetech/version-increment@2023.4.1
+        id: version
+        with:
+          scheme: semver
+          increment: minor
 
       - name: Create tag
         if: github.ref == 'refs/heads/main'
         uses: rickstaa/action-create-tag@v1
         with:
-          tag: \${{ env.release_tag }}
+          tag: \${{ steps.version.outputs.version }}
 
       - name: Create Github Release
         if: github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: \${{ env.release_tag }}
+          tag_name: \${{ steps.version.outputs.version }}
           draft: false
           prerelease: false
-          files: $filename$.pdf 
+          files: $filename$.pdf
