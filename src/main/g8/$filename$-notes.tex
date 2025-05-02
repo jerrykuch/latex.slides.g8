@@ -1,9 +1,9 @@
-% This file produces the lecture notes. It needs to be built after dist-sys-handout.tex.
+% This file produces the lecture notes. It needs to be built after $filename$-handout.tex.
 \documentclass{article}
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{beamerarticle}
 \usepackage{environ}
-\setjobnamebeamerversion{dist-sys-handout}
+\setjobnamebeamerversion{$filename$-handout}
 
 % Suppress frame content by default; include slides via \inlineslide instead
 \mode<article>{
@@ -24,4 +24,4 @@
     \write\exercisesfile{\unexpanded{\begin{exercise}#1\end{exercise}{\par}#2}}%
 }
 
-\input{dist-sys.tex}
+\input{$filename$.tex}
