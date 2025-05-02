@@ -2,24 +2,16 @@
 %             and put them in the default.properties file
 
 % Stuff that may change from year to year; also check slide s:other-courses
-\newcommand{\coursepath}{/teaching/2425/ConcDisSys/}
-\newcommand{\courseurl}{\url{https://www.cst.cam.ac.uk\coursepath}}
-\newcommand{\thisyear}{2024/25}
-\newcommand{\timestampexample}{2021-11-09T09:50:17+00:00}
-\newcommand{\whenissecurity}{Part IB Easter term}
-\newcommand{\whenisnetworking}{Part IB Lent term}
-\newcommand{\networking}{https://www.cl.cam.ac.uk/teaching/2425/CompNet/}
-\newcommand{\security}{https://www.cl.cam.ac.uk/teaching/2425/CySecurity/}
-\newcommand{\ledgersystems}{https://www.cl.cam.ac.uk/teaching/2425/R47/}
-\newcommand{\multicore}{https://www.cl.cam.ac.uk/teaching/2425/L304/}
+\newcommand{\courseurl}{\url{$course_url$}}
+\newcommand{\thisyear}{$thisyear$}
 
 \newcommand{\mydetails}{%
-    Dr.\ Martin Kleppmann\\\\
-    martin.kleppmann@cst.cam.ac.uk\\\\[1em]
-    University of Cambridge\\\\
-    Computer Science Tripos, Part IB%
+    $instructor_name$\\\\
+    $instructor_email$\\\\[1em]
+    $organization$\\\\
 }
 
+% TODO: Parametrize out license footer
 \fancypagestyle{plain}{%
   \renewcommand{\headrulewidth}{0pt}%
   \fancyhf{}%
@@ -31,18 +23,17 @@
 }
 
 \begin{document}
-\title{Distributed Systems}
-\subtitle{University of Cambridge\\\\%
-Computer Science Tripos, Part IB\\\\%
-Michaelmas term \thisyear\\\\%
+\title{$title$}
+\subtitle{$institution$\\\\%
+$course_term$ \thisyear\\\\%
 \courseurl}
 
-\author{Dr.\ Martin Kleppmann\\\\martin.kleppmann@cst.cam.ac.uk}
+\author{$instructor_name$\\\\$instructor_email$}
 \date{}
 \maketitle
 \tableofcontents
 
-\vspace{10pt}\noindent Thank you to Jean-Pascal Billaud, Alexandre Fruchaud, Leela Venkaiah Gangavarapu, Joshua George, David Greaves, Rishabh Jain, and Jorn Janneck for reporting mistakes in earlier versions of these notes.
+\vspace{10pt}\noindent Thank you to TODO acknowledgements.
 
 \def\sectionautorefname{Section}%
 \def\subsectionautorefname{Section}%
