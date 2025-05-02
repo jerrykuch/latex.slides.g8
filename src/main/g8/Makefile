@@ -1,23 +1,23 @@
 SHELL=/bin/bash
 OUTDIR=out
-LATEX=pdflatex -shell-escape -halt-on-error -file-line-error -synctex=1 -output-directory=$(OUTDIR)
+LATEX=pdflatex -shell-escape -halt-on-error -file-line-error -synctex=1 -output-directory=\$(OUTDIR)
 .SUFFIXES: .tex .bib .aux .bbl .dvi .ps .pdf .thy
 .PRECIOUS: %.aux
 
-all:	 $(OUTDIR) dist-sys-notes.pdf dist-sys-slides.pdf solutions.pdf examples1.pdf
+all:	 \$(OUTDIR) dist-sys-notes.pdf dist-sys-slides.pdf solutions.pdf examples1.pdf
 
-$(OUTDIR):
-	mkdir -p $(OUTDIR)
+\$(OUTDIR):
+	mkdir -p \$(OUTDIR)
 
-%.pdf: %.tex $(OUTDIR)/%.aux | $(OUTDIR)
-	$(LATEX) $<
-	while grep 'Rerun to get ' $*.log; do $(LATEX) $<; done
+%.pdf: %.tex \$(OUTDIR)/%.aux | \$(OUTDIR)
+	\$(LATEX) \$<
+	while grep 'Rerun to get ' \$*.log; do \$(LATEX) \$<; done
 
-$(OUTDIR)/%.aux:	%.tex | $(OUTDIR)
-	$(LATEX) $<
+\$(OUTDIR)/%.aux:	%.tex | \$(OUTDIR)
+	\$(LATEX) \$<
 
-%.bbl:	references.bib $(OUTDIR)/%.aux | $(OUTDIR)
-	bibtex $(OUTDIR)/$*
+%.bbl:	references.bib \$(OUTDIR)/%.aux | \$(OUTDIR)
+	bibtex \$(OUTDIR)/\$*
 
 # Actually depends on exercises.tex, which is generated as a side-effect of building dist-sys-notes.pdf
 solutions.pdf: dist-sys-notes.pdf
