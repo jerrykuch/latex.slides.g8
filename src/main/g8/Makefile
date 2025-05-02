@@ -4,7 +4,7 @@ LATEX=pdflatex -shell-escape -halt-on-error -file-line-error -synctex=1 -output-
 .SUFFIXES: .tex .bib .aux .bbl .dvi .ps .pdf .thy
 .PRECIOUS: %.aux
 
-all:	 \$(OUTDIR) dist-sys-notes.pdf dist-sys-slides.pdf solutions.pdf examples1.pdf
+all:	 \$(OUTDIR) $filename$-notes.pdf $filename$-slides.pdf solutions.pdf examples1.pdf
 
 \$(OUTDIR):
 	mkdir -p \$(OUTDIR)
@@ -19,18 +19,18 @@ all:	 \$(OUTDIR) dist-sys-notes.pdf dist-sys-slides.pdf solutions.pdf examples1.
 %.bbl:	references.bib \$(OUTDIR)/%.aux | \$(OUTDIR)
 	bibtex \$(OUTDIR)/\$*
 
-# Actually depends on exercises.tex, which is generated as a side-effect of building dist-sys-notes.pdf
-solutions.pdf: dist-sys-notes.pdf
+# Actually depends on exercises.tex, which is generated as a side-effect of building $filename$-notes.pdf
+solutions.pdf: $filename$-notes.pdf
 
-# Slides from dist-sys-handout.pdf are embedded in the notes
-dist-sys-notes.pdf:	dist-sys-handout.pdf dist-sys-notes.bbl
+# Slides from $filename$-handout.pdf are embedded in the notes
+$filename$-notes.pdf:	$filename$-handout.pdf $filename$-notes.bbl
 
-dist-sys-handout.pdf:	dist-sys.tex
+$filename$-handout.pdf:	$filename$.tex
 
-dist-sys-slides.pdf:	dist-sys.tex
+$filename$-slides.pdf:	$filename$.tex
 
 clean:
-	rm -f {dist-sys-{slides,handout,notes},solutions,examples1}.{log,aux,out,bbl,blg,nav,snm,toc,dvi,ps,pdf}
+	rm -f {$filename$-{slides,handout,notes},solutions,examples1}.{log,aux,out,bbl,blg,nav,snm,toc,dvi,ps,pdf}
 	rm -rf out
 	rm -rf *.synctex.gz
 	rm -rf _minted*
