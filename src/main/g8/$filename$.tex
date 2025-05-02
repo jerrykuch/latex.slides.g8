@@ -45,6 +45,12 @@ Michaelmas term \thisyear\\\\%
 \def\subsectionautorefname{Section}%
 \def\subsubsectionautorefname{Section}%
 
+% Include all bib file entries in document even if they're not
+% explicitly cited.  Remove this line once you actually start citing
+% things if you don't want unreferenced bibliographic items to
+% appear.  Keep this line if you want to build to not break before any
+% citations are made.
+\nocite{*}
 
 \footnotesize
 \bibliographystyle{plainnat}
