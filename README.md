@@ -1,5 +1,8 @@
 # latex.slides.g8
 
+__TODO:__ This README was written in a rush, and I need to come back
+and clean it up.     
+
 Unofficial, opinionated
 [Giter8](https://www.foundweekends.org/giter8/template.html) template
 for LaTeX Beamer slides, using the
@@ -13,16 +16,29 @@ about, you can consult his documentation for pointers on how to edit
 and build your own course materials, substituting for `dist-sys`
 whatever name you've given `g8` to generate your own project.
 
-## What the Template Provides
+Building the PDF files requires a [LaTeX
+distribution](https://www.latex-project.org/get/) and
+[Pygments](https://pygments.org/) for syntax highlighting source
+code. You must run `pdflatex` with `-shell-escape` so that `pdflatex`
+can run `pygmentize`.  The skeletal project includes some examples
+taken from the Kleppman notes that demonstrate things like drawing
+figures with [TikZ](https://pgf-tikz.github.io/pgf/pgfmanual.pdf).
 
-The template provides a `Makefile` driven build in which `make all`
-will produce for a project you've named `foo`:
-- `foo-notes.pdf`, which contains your lecture notes, with the
-  presentation slides embedded in them
-- `foo-slides.pdf`, which contains slides suitable for live
-  presentation, that may include Beamer style animations
-- `foo-handout.pdf`, which contains slides suitable for printing and
-  distribution, lacking Beamer style animations
+## What the Template Provides and How to Use It
+
+If you've told `g8` to name your project `foo`, then:
+- The `Makefile` builds everything.  Just type `make`.
+- `foo.tex` contains all the actual content.
+- `foo-slides.tex` is the entry point for the slides, formatted for
+  live, on-screen presentation
+- `foo-handout.tex` is the entry point for the slides in
+  printer-friendly format.
+- `foo-notes.tex` is the entry point for the lecture notes, and
+  contains expository prose you write, typeset around the embedded
+  slides.
+- __TODO:__ Add exposition here on `solutions.tex` as the entry point
+  for the solution notes for the exercises, and how that content is
+  written to `exercises.tex` when you build `foo-notes.pdf`     
 
 ## How to Create a New Slides Project Using Giter8
 
@@ -75,4 +91,11 @@ brew install sbt
 
 ## License
 
-__TODO:__ Add one here.
+Like the original lecture notes that this `g8` template skeletonizes,
+the template is published under a [Creative Commons BY-SA
+license](). Informally speaking, this means you can use it freely as
+long as you give Martin Kleppmann credit for the original LaTeX
+project structure and build system, and when you base your own work on
+it, you distribute your derivative work under the same license as the
+original.
+
