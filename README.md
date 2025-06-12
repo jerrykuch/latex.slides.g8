@@ -1,7 +1,7 @@
 # latex.slides.g8
 
 Unofficial, opinionated
-[Giter8](https://www.foundweekends.org/giter8/template.html)] template
+[Giter8](https://www.foundweekends.org/giter8/template.html) template
 for LaTeX Beamer slides, using the
 [Metropolis](https://github.com/matze/mtheme) theme for Beamer.
 
